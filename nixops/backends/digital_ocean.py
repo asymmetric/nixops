@@ -186,12 +186,9 @@ class DigitalOceanState(MachineState):
         self.public_ipv6 = first_ipv6
         self.default_gateway6 = first_gw6
 
-        # run modified nixos-infect
-        # - no reboot
-        # - predictable network interface naming (ens3 etc)
         self.wait_for_ssh()
         self.log_start("running nixos-infect")
-        self.run_command('bash </dev/stdin 2>&1', stdin=open(infect_path))
+        self.run_command('NO_REBOOT=true bash </dev/stdin 2>&1', stdin=open(infect_path))
         self.reboot_sync()
 
     def reboot(self, hard=False):
