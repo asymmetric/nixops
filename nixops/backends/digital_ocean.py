@@ -188,7 +188,7 @@ class DigitalOceanState(MachineState):
 
         self.wait_for_ssh()
         self.log_start("running nixos-infect")
-        self.run_command('NO_REBOOT=true bash </dev/stdin 2>&1', stdin=open(infect_path))
+        self.run_command('PROVIDER=digitalocean NO_REBOOT=true bash </dev/stdin 2>&1', stdin=open(infect_path))
         self.reboot_sync()
 
     def reboot(self, hard=False):
