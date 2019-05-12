@@ -6,6 +6,12 @@
 let
   pkgs = import nixpkgs { };
   version = "1.7" + (if officialRelease then "" else "pre${toString nixopsSrc.revCount}_${nixopsSrc.shortRev}");
+  nixos-infect = pkgs.fetchFromGitHub {
+    owner = "elitak";
+    repo = "nixos-infect";
+    rev = "b95ff459a89251fe5d883ca5bbe553487808d2ad";
+    sha256 = "1vr659sxf672cbkc00dangwina9gcnz9s23nz9ryvz7cwx0hy6xy";
+  };
 
 in
 

@@ -28,6 +28,7 @@ import nixops.known_hosts
 import socket
 import digitalocean
 
+# Find a way to read contents of script
 infect_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data', 'nixos-infect'))
 
 
